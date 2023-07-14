@@ -14,20 +14,20 @@ app.use(express.json());
 app.get("/api/v1/products/:id", (req, res) => {
   const id = req.params.id;
 
-  const item = products.find((product) => {
+  const product = products.find((product) => {
     if (product.id == id) {
       return product;
     }
   });
 
-  console.log(item);
+  console.log(product);
 
-  if (item) {
+  if (product) {
     res.status(200).send({
       status: "success",
       message: "Product fetched successfully",
       data: {
-        item,
+        product,
       },
     });
   } else {
@@ -36,4 +36,5 @@ app.get("/api/v1/products/:id", (req, res) => {
 });
 
 module.exports = app;
+
 
